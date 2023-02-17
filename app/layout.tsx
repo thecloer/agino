@@ -1,18 +1,14 @@
-import './globals.css'
+import './globals.css';
+import Header from './Header';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang='ko'>
       <head />
-      <body>{children}</body>
+      <body className='bg-indigo-300 min-h-screen grid grid-rows-[5rem_1fr]'>
+        <Header />
+        <main className='mx-auto container p-4 grow'>{children}</main>
+      </body>
     </html>
-  )
+  );
 }
