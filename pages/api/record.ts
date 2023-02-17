@@ -1,13 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { GameRecordSchema } from '@/common/data';
-import { totalRecord } from '@/models/record.model';
+// import { totalRecord } from '@/models/record.model';
 
 const addRecord = (req: NextApiRequest, res: NextApiResponse) => {
   const safeParsedBody = GameRecordSchema.safeParse(new Map(req.body));
   if (safeParsedBody.success === false) return res.status(400).json({ error: safeParsedBody.error });
 
   const newRecord = safeParsedBody.data;
-  totalRecord.addRecord(newRecord);
+  // totalRecord.addRecord(newRecord);
 
   return res.status(200).json({});
 };
