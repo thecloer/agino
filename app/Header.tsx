@@ -9,10 +9,10 @@ export default function Header() {
         </Link>
 
         <div className='font-semibold'>
-          <Link href='/' className='p-4'>
+          <Link href='/' className='p-4 hover:text-indigo-700 transition-colors duration-200'>
             통계
           </Link>
-          <Link href='/record' className='p-4'>
+          <Link href='/record' className='p-4 hover:text-indigo-700 transition-colors duration-200'>
             기록
           </Link>
         </div>

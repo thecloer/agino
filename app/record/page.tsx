@@ -24,7 +24,10 @@ export default function Record() {
     <div className='w-full'>
       <div className='flex flex-col items-center py-8'>
         <EditingTable record={record} restPlayers={restPlayers} gameCount={gameCount} amount={amount} dispatch={dispatch} />
-        <button className='mt-8 text-lg bg-indigo-600 px-4 py-1 text-white rounded-md' onClick={uploadNewRecord}>
+        <button
+          className='mt-8 text-lg bg-indigo-600 px-4 py-1 text-white rounded-md hover:bg-indigo-500 transition-colors duration-200'
+          onClick={uploadNewRecord}
+        >
           Save
         </button>
       </div>
