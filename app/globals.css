@@ -3,17 +3,32 @@
 @tailwind utilities;
 
 @layer components {
-  .table {
-    @apply text-base md:text-lg border-collapse font-medium md:font-semibold;
+  .record-table {
+    @apply text-base md:text-lg font-medium md:font-semibold flex divide-x-2 overflow-hidden rounded-md;
   }
-  .table tr {
-    @apply divide-x-2;
+  .bg-gradation {
+    @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500;
   }
-  .table td,
-  .table th {
-    @apply px-2 text-center border-b-2 border-slate-300 align-middle;
+  .bg-gradation .record-column:not(:first-child) > div:nth-child(2) {
+    @apply bg-transparent text-white;
   }
-  .table td > button {
-    @apply min-w-[5rem] h-10 self-center;
+
+  .record-column {
+    @apply min-w-[5rem] divide-y-2;
+  }
+  .record-column > div {
+    @apply bg-indigo-300;
+  }
+  .record-column:not(:first-child) > div:first-child {
+    @apply font-semibold bg-indigo-500 text-gray-200;
+  }
+  .record-cell {
+    @apply flex items-center justify-center h-10;
+  }
+  .record-cell:first-child {
+    @apply font-semibold;
+  }
+  .record-cell-button {
+    @apply record-cell hover:bg-indigo-400 hover:cursor-pointer;
   }
 }

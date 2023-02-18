@@ -16,8 +16,23 @@ export const MEMBERS = [
 ] as const;
 export type Member = typeof MEMBERS[number];
 
-export const GameRecordSchema = z.map(
-  z.enum(MEMBERS),
-  z.object({ gameResults: z.array(z.union([z.literal(0), z.literal(1), z.literal(2)])), balance: z.number() })
-);
-export type GameRecordType = z.infer<typeof GameRecordSchema>;
+const MemberSchema = z.enum(MEMBERS);
+const GameResultNumberSchema = z.union([z.literal(0), z.literal(1), z.literal(2)]);
+export type GameResultNumber = z.infer<typeof GameResultNumberSchema>;
+const GameInfoSchema = z.object({
+  gameResults: z.array(GameResultNumberSchema),
+  balance: z.number(),
+});
+export const GameRecordMapSchema = z.map(MemberSchema, GameInfoSchema);
+export type GameRecordMap = z.infer<typeof GameRecordMapSchema>;
+
+export const GameRecordArrayRowSchema = z.tuple([MemberSchema, GameInfoSchema]);
+export const GameRecordArraySchema = z.array(GameRecordArrayRowSchema);
+export type GameRecordArray = [Member, z.infer<typeof GameInfoSchema>][];
+
+export enum GAME_RESULTS {
+  WIN,
+  LOSE,
+  NONE,
+}
+export const GAME_RESULTS_STRING = z.enum(['WIN', 'LOSE', 'NONE']).enum;
