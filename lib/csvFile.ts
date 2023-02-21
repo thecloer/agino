@@ -2,7 +2,7 @@ import { GameRecordArray, GameRecordArrayRowSchema } from '@/common/data';
 import { writeFile, readFileSync } from 'fs';
 
 // name, balance, games...
-const recordArrayToCSV = (record: GameRecordArray) =>
+export const recordArrayToCSV = (record: GameRecordArray) =>
   record.map(([name, { balance, gameResults }]) => [name, balance, ...gameResults].join(',')).join('\n');
 
 const csvToRecordArray = (csv: string) => {

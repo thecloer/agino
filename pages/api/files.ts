@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { readFileSync } from 'fs';
 import { totalRecord } from '@/models/record.model';
+import { recordArrayToCSV } from '@/lib/csvFile';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const stringified = readFileSync(totalRecord.RECORD_PATH, 'utf8');
-
+  const file = recordArrayToCSV(totalRecord.asArray);
   res.setHeader('Content-Type', 'text/csv');
-  return res.end(stringified);
+  return res.end(file);
 }
