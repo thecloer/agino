@@ -3,7 +3,7 @@ import { readCSV, writeCSV } from '@/lib/csvFile';
 import path from 'path';
 
 class GameRecord {
-  readonly RECORD_PATH = path.join(process.cwd(), 'public', 'files', 'record.csv');
+  readonly RECORD_PATH = path.join(process.cwd(), 'db', 'record.csv');
   private _record: GameRecordArray = [];
   constructor() {
     const savedRecord = this.readRecord();

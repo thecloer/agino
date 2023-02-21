@@ -8,7 +8,7 @@ export default function Home() {
 
   const onDownloadClick = () => {
     const aTag = document.createElement('a');
-    aTag.href = `${URL}/files/record.csv`;
+    aTag.href = `${URL}/api/files`;
     aTag.setAttribute('download', 'record.csv');
     aTag.click();
     aTag.remove();
