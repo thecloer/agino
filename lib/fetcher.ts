@@ -1,6 +1,6 @@
 import { GameRecordArray, GameRecordMapSchema } from '@/common/data';
 
-const API_URL = process.env.API_URL || 'http://localhost:3000/api';
+const API_URL = 'https://agino.vercel.app/api';
 export const auth = (password: string) =>
   fetch(`${API_URL}/auth`, {
     method: 'POST',
