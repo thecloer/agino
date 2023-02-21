@@ -1,5 +1,5 @@
 import { GameRecordArray, GameRecordArrayRowSchema } from '@/common/data';
-import { writeFile, readFileSync } from 'fs';
+import { readFileSync } from 'fs';
 
 // name, balance, games...
 export const recordArrayToCSV = (record: GameRecordArray) =>
@@ -19,8 +19,8 @@ const csvToRecordArray = (csv: string) => {
   return recordArray;
 };
 
-export const writeCSV = (path: string, record: GameRecordArray) =>
-  writeFile(path, recordArrayToCSV(record), (err) => err && console.log(err));
+// export const writeCSV = (path: string, record: GameRecordArray) =>
+//   writeFile(path, recordArrayToCSV(record), (err) => err && console.log(err));
 
 export const readCSV = (path: string) => {
   try {

@@ -12,9 +12,9 @@ export default function Table({ record }: Props) {
       <div className='record-column'>
         <div className='record-cell'></div>
         <div className='record-cell'>Total</div>
-        {Array.from({ length: gameCount }, (_, gameNum) => (
-          <div key={gameNum} className='record-cell'>
-            {gameNum + 1}
+        {Array.from({ length: gameCount }, (_, i) => (
+          <div key={gameCount - i} className='record-cell'>
+            {gameCount - i}
           </div>
         ))}
       </div>

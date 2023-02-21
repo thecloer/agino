@@ -1,5 +1,5 @@
 import { GameRecordArray, GAME_RESULTS } from '@/common/data';
-import { readCSV, writeCSV } from '@/lib/csvFile';
+import { readCSV } from '@/lib/csvFile';
 import path from 'path';
 
 class GameRecord {
@@ -16,14 +16,10 @@ class GameRecord {
   private readRecord() {
     return readCSV(this.RECORD_PATH);
   }
-  private async writeRecord() {
-    writeCSV(this.RECORD_PATH, this._record);
-  }
 
   addRecord(newRecord: GameRecordArray) {
     if (this._record.length === 0) {
       this._record = newRecord;
-      this.writeRecord();
       return;
     }
 
@@ -52,8 +48,6 @@ class GameRecord {
         savedPlayerRecord[1].gameResults.push(...newPlayerRecord[1].gameResults);
       }
     });
-
-    this.writeRecord();
   }
 }
 
