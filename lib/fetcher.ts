@@ -1,14 +1,14 @@
 import { GameRecordArray, GameRecordMapSchema } from '@/common/data';
 
-const API_URL = 'https://agino.vercel.app/api';
+export const URL = process.env.NODE_ENV == 'development' ? 'http://localhost:3000' : 'https://agino.vercel.app';
 export const auth = (password: string) =>
-  fetch(`${API_URL}/auth`, {
+  fetch(`${URL}/api/auth`, {
     method: 'POST',
     body: password,
   }).then((res) => res.json());
 
 export const uploadRecord = (data: GameRecordArray) =>
-  fetch(`${API_URL}/record`, {
+  fetch(`${URL}/api/record`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export const uploadRecord = (data: GameRecordArray) =>
     .catch((err) => console.error(err));
 
 export const getRecord = () =>
-  fetch(`${API_URL}/record`, { cache: 'no-store' })
+  fetch(`${URL}/api/record`, { cache: 'no-store' })
     .then((res) => res.json())
     .then((recordArray) => GameRecordMapSchema.parse(new Map(recordArray)))
     .catch((err) => (console.error(err), GameRecordMapSchema.parse(new Map())));

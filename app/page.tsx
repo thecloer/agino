@@ -1,10 +1,18 @@
-import { getRecord } from '@/lib/fetcher';
-import Link from 'next/link';
-
+'use client';
+import { URL, getRecord } from '@/lib/fetcher';
+import { use } from 'react';
 import Table from './Table';
 
-export default async function Home() {
-  const record = await getRecord();
+export default function Home() {
+  const record = use(getRecord());
+
+  const onDownloadClick = () => {
+    const aTag = document.createElement('a');
+    aTag.href = `${URL}/files/record.csv`;
+    aTag.setAttribute('download', 'record.csv');
+    aTag.click();
+    aTag.remove();
+  };
 
   return (
     <div className='w-full'>
@@ -12,9 +20,9 @@ export default async function Home() {
         <section>
           <Table record={record} />
           <div className='flex justify-end mt-8'>
-            <Link href='/files/record.csv'>
-              <button className='btn'>Download</button>
-            </Link>
+            <button className='btn' onClick={onDownloadClick}>
+              Download
+            </button>
           </div>
         </section>
       </div>

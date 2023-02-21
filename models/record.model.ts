@@ -21,8 +21,6 @@ class GameRecord {
   }
 
   addRecord(newRecord: GameRecordArray) {
-    console.log();
-
     if (this._record.length === 0) {
       this._record = newRecord;
       this.writeRecord();
