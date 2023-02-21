@@ -31,4 +31,8 @@
   .record-cell-button {
     @apply record-cell hover:bg-indigo-400 hover:cursor-pointer;
   }
+
+  .btn {
+    @apply text-lg bg-indigo-600 px-4 py-1 text-white rounded-md hover:bg-indigo-500 transition-colors duration-200;
+  }
 }

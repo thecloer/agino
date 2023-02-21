@@ -11,11 +11,9 @@ export default async function Home() {
       <div className='flex flex-col items-center py-8'>
         <section>
           <Table record={record} />
-          <div className='flex justify-end'>
-            <Link href='/files/record.csv' className='mt-8'>
-              <button className='text-lg bg-indigo-600 px-4 py-1 text-white rounded-md hover:bg-indigo-500 transition-colors duration-200'>
-                Download
-              </button>
+          <div className='flex justify-end mt-8'>
+            <Link href='/files/record.csv'>
+              <button className='btn'>Download</button>
             </Link>
           </div>
         </section>

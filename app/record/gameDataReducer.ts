@@ -8,6 +8,7 @@ export const GAME_ACTION_TYPE = z.enum([
   'deleteGame',
   'updateGameResult',
   'updateAmount',
+  'reset',
 ]).enum;
 
 export type GameDataState = {
@@ -36,9 +37,16 @@ export type GameDataAction =
       };
     }
   | {
-      type: typeof GAME_ACTION_TYPE.updateAmount;
+      type: typeof GAME_ACTION_TYPE.updateAmount | typeof GAME_ACTION_TYPE.reset;
       payload: { amount: number };
     };
+
+export const gameDataInitializer = ({ amount }: { amount: number }) => ({
+  record: new Map(),
+  restPlayers: [...MEMBERS],
+  gameCount: 0,
+  amount,
+});
 
 export const gameDataReducer = (state: GameDataState, action: GameDataAction) => {
   let { amount, gameCount, restPlayers } = state;
@@ -83,6 +91,8 @@ export const gameDataReducer = (state: GameDataState, action: GameDataAction) =>
     case GAME_ACTION_TYPE.updateAmount:
       amount = action.payload.amount;
       break;
+    case GAME_ACTION_TYPE.reset:
+      return gameDataInitializer({ amount: action.payload.amount });
 
     default:
       throw new Error('reducer type Error');
